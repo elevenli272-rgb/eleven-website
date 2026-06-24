@@ -287,6 +287,52 @@ footer{
 
 <section id="travel">
 
+<h3>🗺 Travel Map</h3>
+
+<div id="map"></div>
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+
+<script
+src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<script>
+
+var map = L.map('map').setView([33.5, 112], 4);
+
+L.tileLayer(
+'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
+).addTo(map);
+
+const cities = [
+["上海",31.23,121.47],
+["杭州",30.27,120.15],
+["北京",39.90,116.40],
+["桂林",25.27,110.29],
+["厦门",24.48,118.08],
+["深圳",22.54,114.05],
+["香港",22.32,114.17],
+["福州",26.08,119.30],
+["洛阳",34.62,112.45],
+["西安",34.34,108.94],
+["南京",32.06,118.79],
+["武汉",30.59,114.30],
+["日照",35.42,119.52],
+["郑州",34.75,113.62]
+];
+
+cities.forEach(city => {
+  L.marker([city[1],city[2]])
+   .addTo(map)
+   .bindPopup(city[0]);
+});
+
+</script>
+
 <h2 class="section-title">Travel Footprints</h2>
 
 <div class="travel-grid">
